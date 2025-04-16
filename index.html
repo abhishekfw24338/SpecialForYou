@@ -637,26 +637,9 @@
     </div>
 
     <!-- Audio Player -->
-    <div class="audio-container animate__animated animate__fadeIn">
-  <h3>Papa's Song</h3>
-  <button id="playButton" style="
-    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
-  ">
-    Play Papa's Song ❤️
-  </button>
-  <audio id="papaSong" controls loop>
-    <source src="ANIMAL_ Papa Meri Jaan (Full Video) Ranbir Kapoor Anil K,Rashmika M Sandeep VSonu NigamBhushan K.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-</div>
+    <audio id="papaSong" controls loop autoplay muted>
+  <source src="ANIMAL_ Papa Meri Jaan (Full Video) Ranbir Kapoor Anil K,Rashmika M Sandeep VSonu NigamBhushan K.mp3" type="audio/mpeg">
+</audio>
 
     <!-- Hearts Section -->
     <div class="heart-section">
@@ -804,14 +787,13 @@
       title.style.animation = 'heartbeat 1s';
       }, 10000);
 
-     // Add this to your existing script
-  const playButton = document.getElementById('playButton');
-  const papaSong = document.getElementById('papaSong');
-  
-  playButton.addEventListener('click', () => {
-    papaSong.play();
-    playButton.style.display = 'none'; // Optional: hide button after click
-  });
+   
+  // Unmute after user interaction
+  document.body.addEventListener('click', function() {
+    const audio = document.getElementById('papaSong');
+    audio.muted = false;
+  }, { once: true });
+    
   </script>
 </body>
 </html>
